@@ -362,8 +362,6 @@ GET /media/user/10000?visibility=public
 
 ## **Database Schema**:
 
-Based on your clarification, here's the updated **Media Management Service** database schema with correct table assignments:
-
 ### Updated Database Schema for Media Management Service:
 
 ------
