@@ -42,7 +42,7 @@ jobs:
           port: 22
           key: ${{ secrets.REMOTE_SSH_KEY }}
           source: target/${{ env.app_name }}-${{ env.app_version }}.jar
-          target: "~/jars"
+          target: "~/jars/target/${{ env.app_name }}-${{ env.app_version }}.jar"
           rm: true
       - name: SSH into Remote Server and Deploy
         uses: appleboy/ssh-action@v0.1.8
