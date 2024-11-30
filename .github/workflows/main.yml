@@ -42,7 +42,7 @@ jobs:
           port: 22
           key: ${{ secrets.REMOTE_SSH_KEY }}
           source: target/${{ env.app_name }}-${{ env.app_version }}.jar
-          target: "~/jars/target/${{ env.app_name }}-${{ env.app_version }}.jar"
+          target: "~/jars/target/${{ env.app_name }}"
           rm: true
       - name: SSH into Remote Server and Deploy
         uses: appleboy/ssh-action@v0.1.8
@@ -55,5 +55,5 @@ jobs:
             export SPRING_DB_USERNAME=${{ env.SPRING_DB_USERNAME }}
             export SPRING_DB_PASSWORD=${{ env.SPRING_DB_PASSWORD }}
             kill -9 $(lsof -t -i :${{ vars.PORT }}) || true
-            nohup java -Dserver.port=${{ vars.PORT }} -jar /home/${{ secrets.REMOTE_USER }}/jars/target/${{ env.app_name }}-${{ env.app_version }}.jar > ~/${{ env.app_name }}.log 2>&1 &
+            nohup java -Dserver.port=${{ vars.PORT }} -jar /home/${{ secrets.REMOTE_USER }}/jars/target/${{ env.app_name }}/${{ env.app_name }}-${{ env.app_version }}.jar > ~/${{ env.app_name }}.log 2>&1 &
             echo "Application started!"
